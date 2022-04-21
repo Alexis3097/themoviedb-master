@@ -15,12 +15,10 @@
 
 <script>
 import AppBar from "./components/AppBar.vue";
-import Sidebar from "./components/Sidebar.vue";
 import HomeView from "./views/HomeView.vue";
 export default {
   components: {
     AppBar,
-    Sidebar,
     HomeView,
   },
   data() {

@@ -1,12 +1,12 @@
 <template>
-  <div class="col-md-10 mx-auto redondeo mt-5">
-    <Carousel :itemsToShow="3.5" :wrapAround="true">
+  <div class="col-md-10 mx-auto redondeo" style="margin-bottom: 5%;">
+    <Carousel :itemsToShow="3.5" :wrapAround="true" >
       <Slide
         v-for="(tvShowRecomendation, i) in tvShowRecomendations"
         :key="i.id"
         class="margin-left"
       >
-        <div class="carousel__item card carousel-peliculas">
+        <div class="carousel__item card carousel-peliculas" style="margin-bottom: 10%;">
           <img
             class="redondeo"
             :src="`https://image.tmdb.org/t/p/original${tvShowRecomendation.poster_path}`"
@@ -19,7 +19,7 @@
             </p>
             <router-link
               class="btn btn-primary"
-              :to="`/movieDetail/${tvShowRecomendation.id}`"
+              :to="`/tvShowDetail/${tvShowRecomendation.id}`"
               >Ver detalle</router-link
              
             >
@@ -70,6 +70,11 @@ export default defineComponent({
   created() {
     this.getTvShowRecomendated(this.idTvShow);
   },
+   watch:{
+    idTvShow(){
+      this.getTvShowRecomendated(this.idTvShow);
+    }
+  }
 });
 </script>
 <style scoped>

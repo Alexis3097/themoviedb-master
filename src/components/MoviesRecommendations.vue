@@ -1,12 +1,12 @@
 <template>
-  <div class="col-md-10 mx-auto redondeo mt-5">
+  <div class="col-md-10 mx-auto redondeo mt-5" style="margin-bottom: 10%;">
     <Carousel :itemsToShow="3.5" :wrapAround="true">
       <Slide
         v-for="(RecomendatedMovie, i) in RecomendatedMovies"
         :key="i.id"
         class="margin-left"
       >
-        <div class="carousel__item card carousel-peliculas">
+        <div class="carousel__item card carousel-peliculas" style="margin-bottom: 10%;">
           <img
             class="redondeo"
             :src="`https://image.tmdb.org/t/p/original${RecomendatedMovie.poster_path}`"
@@ -69,6 +69,11 @@ export default defineComponent({
   created() {
     this.getRecomendatedMovies(this.idMovie);
   },
+  watch:{
+    idMovie(){
+      this.getRecomendatedMovies(this.idMovie);
+    }
+  }
 });
 </script>
 <style scoped>

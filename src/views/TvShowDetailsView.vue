@@ -92,6 +92,11 @@ export default {
   created() {
     this.getTvShowDetail(this.$route.params.id);
   },
+  watch: {
+    "$route.params.id": function (idTvShow) {
+      this.getTvShowDetail(idTvShow);
+    },
+  },
 };
 </script>
 

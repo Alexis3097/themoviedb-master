@@ -1,7 +1,10 @@
 <template>
-  <div class="row" >
+  <div class="row">
     <div class="col-md-8 mx-auto d-flex mt-5">
-      <div class="card col-md-4 mx-auto" style="padding: 0; background-color: black;">
+      <div
+        class="card col-md-4 mx-auto"
+        style="padding: 0; background-color: black"
+      >
         <img
           :src="`https://image.tmdb.org/t/p/original${movieDetail.poster_path}`"
           alt=""
@@ -35,7 +38,7 @@
     <br />
     <h2 class="text-white mx-auto col-md-10">
       <br />
-      Películas Recomendadas 
+      Películas Recomendadas
     </h2>
     <div class="col-md-12 mx-auto">
       <MoviesRecommendations :idMovie="$route.params.id" />
@@ -53,6 +56,7 @@ export default {
 
   data: () => ({
     movieDetail: [],
+    // idMovie : this.$route.params.id
   }),
   methods: {
     async getMovieDetail(idMovie) {
@@ -68,10 +72,20 @@ export default {
         console.log(error);
       }
     },
+    
   },
 
   created() {
     this.getMovieDetail(this.$route.params.id);
+  },
+  watch: {
+    "$route.params.id": {
+      handler: function (search) {
+        this.getMovieDetail(this.$route.params.id);
+      },
+      deep: true,
+      immediate: true,
+    },
   },
 };
 </script>
