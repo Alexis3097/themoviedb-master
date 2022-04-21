@@ -1,19 +1,25 @@
 <template>
   <div class="col-md-10 mx-auto redondeo mt-5">
     <Carousel :itemsToShow="3.5" :wrapAround="true">
-      <Slide v-for="(tvShow, i) in tvShows" :key="i.id" class="margin-left">
+      <Slide
+        v-for="(tvShowRecomendation, i) in tvShowRecomendations"
+        :key="i.id"
+        class="margin-left"
+      >
         <div class="carousel__item card carousel-peliculas">
           <img
-            class="redondeo card-img-top"
-            :src="`https://image.tmdb.org/t/p/original${tvShow.poster_path}`"
+            class="redondeo"
+            :src="`https://image.tmdb.org/t/p/original${tvShowRecomendation.poster_path}`"
             alt=""
           />
           <div class="card-body">
-            <h5 class="card-title text-white">{{ tvShow.name }}</h5>
-             <p class="card-text calificacion mx-auto">{{tvShow.vote_average}}</p>
-             <router-link
+            <h5 class="card-title text-white">{{ tvShowRecomendation.title }}</h5>
+            <p class="card-text calificacion mx-auto">
+              {{ tvShowRecomendation.vote_average }}
+            </p>
+            <router-link
               class="btn btn-primary"
-              :to="`/tvShowDetail/${tvShow.id}`"
+              :to="`/movieDetail/${tvShowRecomendation.id}`"
               >Ver detalle</router-link
              
             >
@@ -35,32 +41,34 @@ import { Carousel, Navigation, Slide } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
 
 export default defineComponent({
-  name: "CarouselTvShow",
+  props: ["idTvShow"],
+  name: "TvShowRecomendations",
   components: {
     Carousel,
     Slide,
     Navigation,
   },
   data: () => ({
-    tvShows: [],
+    tvShowRecomendations: [],
   }),
 
   methods: {
-    async getTvShows() {
+    async getTvShowRecomendated(idTvShow) {
       try {
         const response = await fetch(
-          "Https://api.themoviedb.org/3/tv/top_rated?api_key=ecaa4965ffbe006e64de9e316960fd4b&language=en-Es&page=1"
+          `https://api.themoviedb.org/3/tv/${idTvShow}/recommendations?api_key=ecaa4965ffbe006e64de9e316960fd4b&language=en-ES&page=1`
         );
         const array = await response.json();
 
-        this.tvShows = array.results;
+        this.tvShowRecomendations = array.results;
+        console.log(array.results);
       } catch (error) {
         console.log(error);
       }
     },
   },
   created() {
-    this.getTvShows();
+    this.getTvShowRecomendated(this.idTvShow);
   },
 });
 </script>

@@ -52,7 +52,7 @@ export default {
         );
         const array = await response.json();
 
-        this.movies = array.results;
+        this.movies = [];
       } catch (error) {
         console.log(error);
       }

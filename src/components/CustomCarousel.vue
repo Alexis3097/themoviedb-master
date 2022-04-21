@@ -1,7 +1,6 @@
 <template>
   <div class="col-md-10 mx-auto redondeo mt-5">
     <Carousel :autoplay="2000" :wrap-around="true">
-      <!-- <router-link class="nav-link" to="/"> -->
         <Slide v-for="(rateMovie, i) in rateMovies" :key="i.id">
           <div class="card fondo redondeo">
             <img
@@ -13,10 +12,11 @@
               <h3 class="card-title text-white font-weight-bold">
                 {{ rateMovie.title }}
               </h3>
+              <p class="card-text calificacion mx-auto">{{rateMovie.vote_average}}</p>
+             <router-link class="btn btn-primary" :to="`/movieDetail/${rateMovie.id}`">Ver detalle</router-link>
             </div>
           </div>
         </Slide>
-      <!-- </router-link> -->
 
       <template #addons>
         <Pagination />
@@ -67,6 +67,15 @@ export default defineComponent({
   background-color: black;
 }
 .redondeo {
+  border-radius: 10px;
+}
+.calificacion {
+  width: 5%;
+  text-align: center;
+  background-color: yellow;
+  color: #030303;
+  font-weight: bold;
+  text-align: center;
   border-radius: 10px;
 }
 </style>

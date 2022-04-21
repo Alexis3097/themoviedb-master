@@ -1,20 +1,25 @@
 <template>
   <div class="col-md-10 mx-auto redondeo mt-5">
-    <Carousel :autoplay="2000" :wrap-around="true" >
+    <Carousel :autoplay="2000" :wrap-around="true">
       <Slide v-for="(popularTvShow, i) in popularTvShows" :key="i.id">
-   
-
         <div class="card fondo redondeo">
           <img
-          class="redondeo"
+            class="redondeo"
             :src="`https://image.tmdb.org/t/p/original${popularTvShow.backdrop_path}`"
             alt=""
           />
           <div class="card-body">
-          <h3 class="card-title text-white font-weight-bold">
-           {{popularTvShow.name}}
-          </h3>
-         
+            <h3 class="card-title text-white font-weight-bold">
+              {{ popularTvShow.name }}
+            </h3>
+            <p class="card-text star mx-auto">
+              {{ popularTvShow.vote_average }}
+            </p>
+            <router-link
+              class="btn btn-primary"
+              :to="`/tvShowDetail/${popularTvShow.id}`"
+              >Ver detalle</router-link
+            >
           </div>
         </div>
       </Slide>
@@ -64,13 +69,19 @@ export default defineComponent({
 });
 </script>
 <style scoped>
- .fondo{
-   background-color: black;
-  
-   
- }
- .redondeo{
-   border-radius: 10px;
- }
-
+.fondo {
+  background-color: black;
+}
+.redondeo {
+  border-radius: 10px;
+}
+.star{
+  width: 5%;
+  text-align: center;
+  background-color: yellow;
+  color: #030303;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 10px;
+}
 </style>
