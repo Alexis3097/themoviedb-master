@@ -10,45 +10,49 @@
           alt=""
         />
       </div>
-      <div class="card col-md-8 mx-auto card-tvShow-detail">
-        <h2 class="text-white">{{ tvShowDetail.name }}</h2>
-        <p class="font-weight-light card-tvShow-detail text-white">
-          {{ tvShowDetail.overview }}
-        </p>
-        <p class="text-white">
-          <span style="font-weight: bolder">Fecha de primera emision: </span
-          >{{ tvShowDetail.first_air_date }}
-        </p>
+      <div class="card col-md-8 mx-auto card-tvShow-detail justify-content-between">
+       <div>
+          <h2 class="text-white">{{ tvShowDetail.name }}</h2>
+          <p class="font-weight-light card-tvShow-detail text-white">
+            {{ tvShowDetail.overview }}
+          </p>
+          <p class="text-white">
+            <span style="font-weight: bolder">Fecha de primera emision: </span
+            >{{ tvShowDetail.first_air_date }}
+          </p>
+       </div>
 
-        <div class="row align-items-center justify-content-between">
-
-          <div class="col-md-6">
-            <span class="text-white" style="font-weight: bolder"
-              >Temporadas</span
-            >
-            <p class="star col">{{ tvShowDetail.number_of_seasons }}</p>
+        <div class="col justify-content-between" style="margin-top: 10%">
+          <div class="row align-items-center justify-content-between">
+  
+            <div class="col-md-6">
+              <span class="text-white" style="font-weight: bolder"
+                >Temporadas</span
+              >
+              <p class="star col">{{ tvShowDetail.number_of_seasons }}</p>
+            </div>
+            <div class="col-md-6 ">
+              <span class="text-white" style="font-weight: bolder"
+                >Stars</span
+              >
+               <p class="star ">{{ tvShowDetail.vote_average }}</p>
+            </div>
           </div>
-          <div class="col-md-6 ">
-            <span class="text-white" style="font-weight: bolder"
-              >Stars</span
-            >
-             <p class="star ">{{ tvShowDetail.vote_average }}</p>
-          </div>
-        </div>
-
-        <p class="text-white">
-          <span style="font-weight: bolder">Género: </span>
-          <span>
-            <span
-              v-for="(generos, i) in tvShowDetail.genres"
-              :key="i.id"
-              style="margin-bottom: 1rem"
-              class="text-white"
-            >
-              {{ generos.name }},
+  
+          <p class="text-white">
+            <span style="font-weight: bolder">Género: </span>
+            <span>
+              <span
+                v-for="(generos, i) in tvShowDetail.genres"
+                :key="i.id"
+                style="margin-bottom: 1rem"
+                class="text-white"
+              >
+                {{ generos.name }},
+              </span>
             </span>
-          </span>
-        </p>
+          </p>
+        </div>
       </div>
     </div>
     <br />
