@@ -1,23 +1,22 @@
 <template>
   <div class="col-md-10 mx-auto redondeo mt-5">
-    <Carousel :autoplay="2000" :wrap-around="true" >
-      <Slide v-for="(rateMovie, i) in rateMovies" :key="i.id">
-   
-
-        <div class="card fondo redondeo">
-          <img
-          class="redondeo"
-            :src="`https://image.tmdb.org/t/p/original${rateMovie.backdrop_path}`"
-            alt=""
-          />
-          <div class="card-body">
-          <h3 class="card-title text-white font-weight-bold">
-           {{rateMovie.title}}
-          </h3>
-         
+    <Carousel :autoplay="2000" :wrap-around="true">
+      <!-- <router-link class="nav-link" to="/"> -->
+        <Slide v-for="(rateMovie, i) in rateMovies" :key="i.id">
+          <div class="card fondo redondeo">
+            <img
+              class="redondeo"
+              :src="`https://image.tmdb.org/t/p/original${rateMovie.backdrop_path}`"
+              alt=""
+            />
+            <div class="card-body">
+              <h3 class="card-title text-white font-weight-bold">
+                {{ rateMovie.title }}
+              </h3>
+            </div>
           </div>
-        </div>
-      </Slide>
+        </Slide>
+      <!-- </router-link> -->
 
       <template #addons>
         <Pagination />
@@ -64,13 +63,10 @@ export default defineComponent({
 });
 </script>
 <style scoped>
- .fondo{
-   background-color: black;
-  
-   
- }
- .redondeo{
-   border-radius: 10px;
- }
-
+.fondo {
+  background-color: black;
+}
+.redondeo {
+  border-radius: 10px;
+}
 </style>
