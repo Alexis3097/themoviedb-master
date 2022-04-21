@@ -1,5 +1,5 @@
 <template>
-  <div class="row" id="toolbarChat" ref="toolbarChat">
+  <div class="row" >
     <div class="col-md-8 mx-auto d-flex mt-5">
       <div class="card col-md-4 mx-auto" style="padding: 0; background-color: black;">
         <img
@@ -8,7 +8,7 @@
         />
       </div>
       <div class="card col-md-8 mx-auto card-movie-detail">
-        <h2 class="text-white">{{ movieDetail.original_title }}</h2>
+        <h2 class="text-white">{{ movieDetail.title }}</h2>
         <p class="font-weight-light card-movie-detail text-white">
           {{ movieDetail.overview }}
         </p>
@@ -68,16 +68,10 @@ export default {
         console.log(error);
       }
     },
-    scrollTop(){
-       this.$nextTick(() => {
-            this.$refs.toolbarChat.scrollTop = 0;
-        });
-    }
   },
 
   created() {
     this.getMovieDetail(this.$route.params.id);
-    this.scrollTop();
   },
 };
 </script>

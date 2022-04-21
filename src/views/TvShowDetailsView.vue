@@ -1,7 +1,10 @@
 <template>
- <div class="row" id="toolbarChat" ref="toolbarChat">
+  <div class="row" id="toolbarChat" ref="toolbarChat">
     <div class="col-md-8 mx-auto d-flex mt-5">
-      <div class="card col-md-4 mx-auto" style="padding: 0; background-color: black;">
+      <div
+        class="card col-md-4 mx-auto"
+        style="padding: 0; background-color: black"
+      >
         <img
           :src="`https://image.tmdb.org/t/p/original${tvShowDetail.poster_path}`"
           alt=""
@@ -16,7 +19,23 @@
           <span style="font-weight: bolder">Fecha de primera emision: </span
           >{{ tvShowDetail.first_air_date }}
         </p>
-        <p class="star">{{ tvShowDetail.vote_average }}</p>
+
+        <div class="row align-items-center justify-content-between">
+
+          <div class="col-md-6">
+            <span class="text-white" style="font-weight: bolder"
+              >Temporadas</span
+            >
+            <p class="star col">{{ tvShowDetail.number_of_seasons }}</p>
+          </div>
+          <div class="col-md-6 ">
+            <span class="text-white" style="font-weight: bolder"
+              >Stars</span
+            >
+             <p class="star ">{{ tvShowDetail.vote_average }}</p>
+          </div>
+        </div>
+
         <p class="text-white">
           <span style="font-weight: bolder">Género: </span>
           <span>
@@ -35,7 +54,7 @@
     <br />
     <h2 class="text-white mx-auto col-md-10">
       <br />
-      Tv show Recomendadas 
+      Tv show Recomendadas
     </h2>
     <div class="col-md-12 mx-auto">
       <TvShowRecomendations :idTvShow="$route.params.id" />
@@ -75,10 +94,9 @@ export default {
 <style scoped>
 .card-tvShow-detail {
   background-color: black;
-
 }
 .star {
-  width: 10%;
+  width: 20%;
   text-align: center;
   background-color: yellow;
   color: #030303;

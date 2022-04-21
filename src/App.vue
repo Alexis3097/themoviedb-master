@@ -2,17 +2,12 @@
   <AppBar />
   <div class="container-fluid fondo">
     <div class="row">
-      <div class="col-md-9 col-lg-9 col-xs-9">
+      <div class="col-md-12 col-lg-12 col-xs-12">
         <main class="">
           <router-view />
         </main>
       </div>
-      <div class="col-md-3 col-lg-3 col-xs-3 sidebar-height">
-        <p class="text-white" style="font-weight: bolder; text-align: left">
-          Popular movies
-        </p>
-        <Sidebar />
-      </div>
+
     </div>
   </div>
 </template>
