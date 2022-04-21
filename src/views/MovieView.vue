@@ -1,27 +1,25 @@
 <template>
-  <Carousel :autoplay="2000" :wrap-around="true">
-    <Slide v-for="slide in 10" :key="slide">
-      <div class="carousel__item">{{ slide }}</div>
-    </Slide>
+  <h2 class="text-white mx-auto col-md-10">Películas Top(Rated)</h2>
+  <CustomCarousel> </CustomCarousel>
+  <h2 class="text-white mx-auto col-md-10">Películas Favoritas(Favorite)</h2>
+  <CarouselMovies />
+  <br />
 
-    <template #addons>
-      <Pagination />
-    </template>
-  </Carousel>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-import { Carousel, Pagination, Slide } from 'vue3-carousel';
+import CustomCarousel from "../components/CustomCarousel.vue";
+import CarouselMovies from "../components/CarouselMovies.vue";
+import CarouselTvShow from "../components/CarouselTvShow.vue";
 
-import 'vue3-carousel/dist/carousel.css';
 
-export default defineComponent({
-  name: 'MovieView',
+
+export default ({
+  name: "MovieView",
   components: {
-    Carousel,
-    Slide,
-    Pagination,
+    CustomCarousel,
+    CarouselMovies,
+    CarouselTvShow,
   },
 });
 </script>
