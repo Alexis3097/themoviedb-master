@@ -3,6 +3,8 @@
 ## Project setup
 ```
 npm install
+crear un archivo .env con las caracterristicas de .env.example
+en .env agregar su api_key de themoviedb
 ```
 
 ### Compiles and hot-reloads for development
