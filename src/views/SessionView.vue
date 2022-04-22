@@ -31,6 +31,7 @@ export default {
     return {
       token: localStorage.getItem("token") ?? "",
       session_id: "",
+      api_key: "",
     };
   },
   methods: {
@@ -69,14 +70,14 @@ export default {
       }
     },
   },
-  // created() {
-  //   this.token = localStorage.getItem("token") ?? "";
-  // },
+  created() {
+    this.api_key = process.env.VUE_APP_MOVIE_KEY;
+  },
   watch: {
-    idMovie(){
+    idMovie() {
       //re-render component
       this.$forceUpdate();
-    }
+    },
   },
 };
 </script>

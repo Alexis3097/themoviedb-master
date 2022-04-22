@@ -39,13 +39,14 @@ export default defineComponent({
   },
   data: () => ({
     movies: [],
+    api_key: "",
   }),
 
   methods: {
     async getPopularMovies() {
       try {
         const response = await fetch(
-          "https://api.themoviedb.org/3/movie/popular?api_key=ecaa4965ffbe006e64de9e316960fd4b&language=en-ES&page=1"
+          `https://api.themoviedb.org/3/movie/popular?api_key=${this.api_key}&language=en-ES&page=1`
         );
         const array = await response.json();
 
@@ -56,6 +57,7 @@ export default defineComponent({
     },
   },
   created() {
+    this.api_key = process.env.VUE_APP_MOVIE_KEY;
     this.getPopularMovies();
   },
 });

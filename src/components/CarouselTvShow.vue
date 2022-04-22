@@ -43,13 +43,14 @@ export default defineComponent({
   },
   data: () => ({
     tvShows: [],
+    api_key: "",
   }),
 
   methods: {
     async getTvShows() {
       try {
         const response = await fetch(
-          "Https://api.themoviedb.org/3/tv/top_rated?api_key=ecaa4965ffbe006e64de9e316960fd4b&language=en-Es&page=1"
+          `Https://api.themoviedb.org/3/tv/top_rated?api_key=${this.api_key}&language=en-Es&page=1`
         );
         const array = await response.json();
 
@@ -60,6 +61,7 @@ export default defineComponent({
     },
   },
   created() {
+    this.api_key = process.env.VUE_APP_MOVIE_KEY;
     this.getTvShows();
   },
 });

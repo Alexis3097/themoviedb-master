@@ -75,12 +75,13 @@ export default {
   },
   data: () => ({
     tvShowDetail: [],
+    api_key: "",
   }),
   methods: {
     async getTvShowDetail(idTvShow) {
       try {
         const response = await fetch(`
-                https://api.themoviedb.org/3/tv/${idTvShow}?api_key=ecaa4965ffbe006e64de9e316960fd4b&language=en-ES`);
+                https://api.themoviedb.org/3/tv/${idTvShow}?api_key=${this.api_key}&language=en-ES`);
         const array = await response.json();
         this.tvShowDetail = array;
       } catch (error) {
@@ -89,6 +90,7 @@ export default {
     },
   },
   created() {
+    this.api_key = process.env.VUE_APP_MOVIE_KEY;
     this.getTvShowDetail(this.$route.params.id);
   },
   watch: {

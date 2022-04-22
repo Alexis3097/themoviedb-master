@@ -56,13 +56,13 @@ export default {
 
   data: () => ({
     movieDetail: [],
-    // idMovie : this.$route.params.id
+    api_key: "",
   }),
   methods: {
     async getMovieDetail(idMovie) {
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${idMovie}?api_key=ecaa4965ffbe006e64de9e316960fd4b&language=en-ES`
+          `https://api.themoviedb.org/3/movie/${idMovie}?api_key=${this.api_key}&language=en-ES`
         );
         const array = await response.json();
 
@@ -75,6 +75,7 @@ export default {
   },
 
   created() {
+    this.api_key = process.env.VUE_APP_MOVIE_KEY;
     this.getMovieDetail(this.$route.params.id);
   },
   watch: {
