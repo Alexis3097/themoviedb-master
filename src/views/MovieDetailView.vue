@@ -67,7 +67,6 @@ export default {
         const array = await response.json();
 
         this.movieDetail = array;
-        console.log(array);
       } catch (error) {
         console.log(error);
       }

@@ -50,7 +50,6 @@ export default defineComponent({
         const array = await response.json();
 
         this.movies = array.results;
-        console.log(array.results);
       } catch (error) {
         console.log(error);
       }

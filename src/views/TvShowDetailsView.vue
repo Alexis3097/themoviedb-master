@@ -83,7 +83,6 @@ export default {
                 https://api.themoviedb.org/3/tv/${idTvShow}?api_key=ecaa4965ffbe006e64de9e316960fd4b&language=en-ES`);
         const array = await response.json();
         this.tvShowDetail = array;
-        console.log(array);
       } catch (error) {
         console.log(error);
       }

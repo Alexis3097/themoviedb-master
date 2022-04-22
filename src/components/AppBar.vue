@@ -12,6 +12,8 @@
           <router-link class="nav-link" to="/tvshow">Tv Shows</router-link>
         </li>
       </ul>
+        <router-link class="btn btn-outline-primary " to="/session">Iniciar sesion para votar</router-link>
+      
     </div>
   </nav>
 </template>

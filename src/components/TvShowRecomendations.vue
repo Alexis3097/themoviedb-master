@@ -61,7 +61,6 @@ export default defineComponent({
         const array = await response.json();
 
         this.tvShowRecomendations = array.results;
-        console.log(array.results);
       } catch (error) {
         console.log(error);
       }
